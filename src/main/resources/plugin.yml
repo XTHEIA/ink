@@ -1,0 +1,8 @@
+name: Ink
+version: '${version}'
+main: kr.sbxt.xtheia.theia.ink.Ink
+api-version: 1.19
+prefix: Ink
+load: STARTUP
+authors: [ sbkimxtheia ]
+description: Core of THEIA's plugins for PaperMC
