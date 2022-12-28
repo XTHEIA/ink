@@ -1,6 +1,6 @@
-package kr.sbxt.xtheia.theia.ink;
+package kr.sbxt.xtheia.theia.ink.color;
 
-public enum Colors implements ColorCore
+public enum Colors implements IColor
 {
 	
 	WHITE(0xFFFFFF), // #FFFFFF
@@ -56,7 +56,8 @@ public enum Colors implements ColorCore
 	
 	QUASAR(0xFE1671),
 	QUASAR_LIGHT(0xFE76AD),
-	;
+	
+	SOUL(0xB289FF);
 	final private int rgbValue;
 	final private String description;
 	
@@ -85,9 +86,26 @@ public enum Colors implements ColorCore
 	}
 	
 	
-	@Override
-	public int getRGB()
+	public static org.bukkit.Color lerp(org.bukkit.Color c1, org.bukkit.Color c2, float weight)
 	{
-		return rgbValue;
+		final int originR = c1.getRed(),
+				originG = c1.getGreen(),
+				originB = c1.getBlue(),
+				addiR = c2.getRed() - originR,
+				addiG = c2.getGreen() - originG,
+				addiB = c2.getBlue() - originB;
+		
+		return org.bukkit.Color.fromRGB(
+				originR + (int) (weight * addiR),
+				originG + (int) (weight * addiG),
+				originB + (int) (weight * addiB)
+		);
+		
+	}
+	
+	@Override
+	public RGB asRGB()
+	{
+		return ColorUtility.rgb(rgbValue);
 	}
 }

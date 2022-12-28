@@ -26,6 +26,7 @@ repositories {
 }
 
 dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     compileOnly 'io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT'
     implementation(group: 'kr.sbxt.xtheia.theia', name: 'theiacore', 'version': 'b1.0.42')
 }

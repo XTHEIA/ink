@@ -1,20 +1,27 @@
-package kr.sbxt.xtheia.theia.ink;
+package kr.sbxt.xtheia.theia.ink.color;
 
+import kr.sbxt.xtheia.theia.ink.Comp;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 
-public interface ColorCore
+public interface IColor
 {
-	int getRGB();
+	
+	RGB asRGB();
+	
+	default int getRGBInt()
+	{
+		return asRGB().asRGBInt();
+	}
 	
 	default org.bukkit.Color asBukkitColor()
 	{
-		return org.bukkit.Color.fromRGB(getRGB());
+		return org.bukkit.Color.fromRGB(getRGBInt());
 	}
 	
 	default TextColor asTextColor()
 	{
-		return TextColor.color(getRGB());
+		return TextColor.color(getRGBInt());
 	}
 	
 	default String asHexString()
@@ -24,8 +31,8 @@ public interface ColorCore
 	
 	default Component asHexComponent()
 	{
-		return Comp.hexColor(getRGB());
+		return Comp.hexColor(getRGBInt());
 	}
 	
-
+	
 }

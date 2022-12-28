@@ -1,11 +1,11 @@
 package kr.sbxt.xtheia.theia.ink;
 
-import kr.sbxt.xtheia.theia.theiacore.TheiaCore;
+import kr.sbxt.xtheia.theia.ink.color.Colors;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 import org.bukkit.Server;
 import org.bukkit.inventory.ItemFactory;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
 
 public final class Ink extends JavaPlugin
 {
@@ -22,7 +22,8 @@ public final class Ink extends JavaPlugin
 		componentLogger = getComponentLogger();
 		itemFactory = currentServer.getItemFactory();
 		
-		log("INK Enabled!");
+		log(Comp.tc("Ink Enabled Successfully!", Colors.LEGACY_AQUA));
+		log(Comp.a(Comp.t("Powered by "), Comp.tc("THEIA Core", Colors.LEGACY_YELLOW), Comp.t(" from "), Comp.tc("XTHEIA", Colors.LEGACY_AQUA)));
 	}
 	
 	public static Server getCurrentServer()
@@ -37,6 +38,11 @@ public final class Ink extends JavaPlugin
 	
 	public static void log(String msg)
 	{
-		componentLogger.info(Comp.t(msg));
+		log(Comp.t(msg));
+	}
+	
+	public static void log(Component msg)
+	{
+		componentLogger.info(msg);
 	}
 }
