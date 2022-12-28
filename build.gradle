@@ -27,7 +27,7 @@ repositories {
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
-    compileOnly 'io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT'
+    compileOnly "io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT"
     implementation(group: 'kr.sbxt.xtheia.theia', name: 'theiacore', 'version': 'b1.0.42')
 }
 
@@ -44,6 +44,9 @@ javadoc {
 java {
     withSourcesJar()
     withJavadocJar()
+
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion
