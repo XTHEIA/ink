@@ -4,6 +4,7 @@ import kr.sbxt.xtheia.theia.ink.color.Colors;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 import org.bukkit.Server;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.inventory.ItemFactory;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -11,7 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class Ink extends JavaPlugin
 {
 	
-	private static ComponentLogger componentLogger;
+	private static ConsoleCommandSender componentLogger;
 	private static Server currentServer;
 	private static ItemFactory itemFactory;
 	
@@ -20,7 +21,7 @@ public final class Ink extends JavaPlugin
 	{
 		// Plugin startup logic
 		currentServer = getServer();
-		componentLogger = getComponentLogger();
+		componentLogger = currentServer.getConsoleSender();
 		itemFactory = currentServer.getItemFactory();
 		
 		log(Comp.tc("Ink Enabled Successfully!", Colors.LEGACY_AQUA));
@@ -50,6 +51,6 @@ public final class Ink extends JavaPlugin
 	
 	public static void log(Component msg)
 	{
-		componentLogger.info(msg);
+		componentLogger.sendMessage(Comp.tc("XT/ ", Colors.LEGACY_AQUA).append(msg));
 	}
 }
