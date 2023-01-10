@@ -18,10 +18,7 @@ repositories {
     }
     maven {
         url = uri("https://maven.pkg.github.com/XTHEIA/theiacore")
-        credentials {
-            username = System.getenv("USERNAME")
-            password = System.getenv("TOKEN")
-        }
+
     }
 }
 
