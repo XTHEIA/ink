@@ -6,6 +6,6 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 {
 	public static void log(String msg)
 	{
-		Ink.log(msg);
+		Log.info(msg);
 	}
 }
