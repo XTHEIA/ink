@@ -2,7 +2,6 @@ package kr.sbxt.xtheia.theia.ink;
 
 import kr.sbxt.xtheia.theia.ink.color.Colors;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.inventory.ItemFactory;
