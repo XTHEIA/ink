@@ -71,7 +71,7 @@ public final class Castor
 	
 	public static void drawLinearParticle(Location from, final Vector direction, final double invisibleDist, final double maxDistance, CastorParticleOption particleOption)
 	{
-		final Vector normalizedDirection = direction.normalize();
+		final Vector normalizedDirection = direction.clone().normalize();
 		final World world = from.getWorld();
 		
 		final Vector step = normalizedDirection.multiply(particleOption.distance());

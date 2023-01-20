@@ -7,11 +7,11 @@ import net.kyori.adventure.text.format.TextColor;
 public interface IColor
 {
 	
-	RGB asRGB();
+	RGB getRGB();
 	
 	default int getRGBInt()
 	{
-		return asRGB().asRGBInt();
+		return ColorUtility.rgb(getRGB());
 	}
 	
 	default org.bukkit.Color asBukkitColor()

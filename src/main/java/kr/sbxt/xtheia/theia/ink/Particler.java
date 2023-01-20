@@ -29,7 +29,7 @@ public final class Particler
 		{
 			final var weight = i / (float) count;
 			world.spawnParticle(Particle.REDSTONE, originX + (i * stepX), originY + (i * stepY), originZ + (i * stepZ), particleCount, offsetXZ, offsetY, offsetXZ, 0.01,
-					new Particle.DustOptions(Colors.lerp(colorStart, colorEnd, weight), weight), true);
+					new Particle.DustOptions(ColorUtility.lerp(colorStart, colorEnd, weight), weight), true);
 		}
 	}
 	
@@ -83,7 +83,7 @@ public final class Particler
 		}
 	}
 	
-	public static void linear(final World world, final Line line, final float interval, ParticleBuilder particleBuilder)
+	public static void linear(World world, Line line, float interval, ParticleBuilder particleBuilder)
 	{
 		final var origin = line.getP1();
 		final double originX = origin.getX(), originY = origin.getY(), originZ = origin.getZ();

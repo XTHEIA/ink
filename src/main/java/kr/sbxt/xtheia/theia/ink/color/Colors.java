@@ -61,50 +61,33 @@ public enum Colors implements IColor
 	final private int rgbValue;
 	final private String description;
 	
-	Colors(int value)
-	{
-		this.rgbValue = value;
-		description = null;
-	}
-	
-	Colors(Colors copy)
-	{
-		this.rgbValue = copy.rgbValue;
-		description = copy.description;
-	}
-	
-	Colors(int value, String description)
+	private Colors(int value, String description)
 	{
 		this.rgbValue = value;
 		this.description = description;
 	}
 	
-	Colors(Colors copy, String description)
+	private Colors(int value)
 	{
-		this.rgbValue = copy.rgbValue;
-		this.description = description;
+		this(value, null);
+	}
+	
+	private Colors(Colors copy)
+	{
+		this(copy.rgbValue, copy.description);
 	}
 	
 	
-	public static org.bukkit.Color lerp(org.bukkit.Color c1, org.bukkit.Color c2, float weight)
+	private Colors(Colors copy, String description)
 	{
-		final int originR = c1.getRed(),
-				originG = c1.getGreen(),
-				originB = c1.getBlue(),
-				addiR = c2.getRed() - originR,
-				addiG = c2.getGreen() - originG,
-				addiB = c2.getBlue() - originB;
-		
-		return org.bukkit.Color.fromRGB(
-				originR + (int) (weight * addiR),
-				originG + (int) (weight * addiG),
-				originB + (int) (weight * addiB)
-		);
-		
+		this(copy.rgbValue, copy.description);
 	}
+	
+	
+
 	
 	@Override
-	public RGB asRGB()
+	public RGB getRGB()
 	{
 		return ColorUtility.rgb(rgbValue);
 	}
