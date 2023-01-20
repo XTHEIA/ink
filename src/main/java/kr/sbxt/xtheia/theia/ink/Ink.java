@@ -25,6 +25,7 @@ public final class Ink extends JavaPlugin
 		currentServer = getServer();
 		componentLogger = currentServer.getConsoleSender();
 		itemFactory = currentServer.getItemFactory();
+		scheduler = currentServer.getScheduler();
 		
 		Log.info(Comp.tc("Ink Enabled Successfully!", Colors.LEGACY_AQUA));
 		Log.info(Comp.a(Comp.t("Powered by "), Comp.tc("THEIA Core", Colors.LEGACY_YELLOW), Comp.t(" from "), Comp.tc("XTHEIA", Colors.LEGACY_AQUA)));
