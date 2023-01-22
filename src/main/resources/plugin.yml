@@ -1,6 +1,6 @@
 name: Ink
 version: '${version}'
-main: kr.sbxt.xtheia.theia.ink.Ink
+main: kr.sbxt.xtheia.theia.ink.InkPlugin
 api-version: 1.19
 prefix: Ink
 load: STARTUP

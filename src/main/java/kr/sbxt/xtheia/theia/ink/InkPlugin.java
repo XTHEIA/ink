@@ -11,9 +11,9 @@ import javax.annotation.Nullable;
 import java.util.LinkedList;
 import java.util.List;
 
-public final class Ink extends TheiaPaperPlugin
+public final class InkPlugin extends TheiaPaperPlugin
 {
-	static Ink current;
+	static InkPlugin current;
 	static Server currentServer;
 	static ItemFactory itemFactory;
 	static BukkitScheduler scheduler;
@@ -32,7 +32,6 @@ public final class Ink extends TheiaPaperPlugin
 		itemFactory = currentServer.getItemFactory();
 		scheduler = currentServer.getScheduler();
 		
-		preInitInk(this);
 		
 		Log.info(Comp.tc("Ink Enabled Successfully!", Colors.LEGACY_AQUA));
 		Log.info(Comp.a(Comp.t("Powered by "), Comp.tc("THEIA Core", Colors.LEGACY_YELLOW), Comp.t(" from "), Comp.tc("XTHEIA", Colors.LEGACY_AQUA)));

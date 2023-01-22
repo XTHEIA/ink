@@ -12,7 +12,7 @@ public final class Log
 	
 	static
 	{
-		componentLogger = Ink.componentLogger;
+		componentLogger = InkPlugin.componentLogger;
 	}
 	
 	public static void info(String msg)

@@ -7,13 +7,13 @@ import java.util.function.Consumer;
 
 public final class Tasker
 {
-	private final static Ink _plugin;
+	private final static InkPlugin _plugin;
 	private final static BukkitScheduler _scheduler;
 	
 	static
 	{
-		_plugin = Ink.current;
-		_scheduler = Ink.scheduler;
+		_plugin = InkPlugin.current;
+		_scheduler = InkPlugin.scheduler;
 	}
 	
 	public static BukkitTask delayed(long delayTicks, Runnable task)
