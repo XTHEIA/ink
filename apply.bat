@@ -7,4 +7,4 @@ SET PATH_BUILT=C:\library\project\%PROJECT_NAME%\build\libs\%BUILD_FILE_NAME%
 set DIR_SERVER=C:\library\minecraft\server\THEIA
 set DIR_SERVER_PLUGINS=%DIR_SERVER%\plugins
 
-xcopy "%PATH_BUILT%" "%DIR_SERVER_PLUGINS%" /Y && exit
+xcopy "C:\library\project\ink\build\libs\ink-1.0-all.jar" "C:\library\minecraft\server\THEIA\plugins" /Y && exit

@@ -1,40 +1,49 @@
 package kr.sbxt.xtheia.theia.ink;
 
 import kr.sbxt.xtheia.theia.ink.color.Colors;
-import net.kyori.adventure.text.Component;
+import kr.sbxt.xtheia.theia.ink.color.IColor;
 import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.inventory.ItemFactory;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
-public final class Ink extends JavaPlugin
+import javax.annotation.Nullable;
+import java.util.LinkedList;
+import java.util.List;
+
+public final class Ink extends TheiaPaperPlugin
 {
 	static Ink current;
-	static ConsoleCommandSender componentLogger;
 	static Server currentServer;
 	static ItemFactory itemFactory;
 	static BukkitScheduler scheduler;
+	static ConsoleCommandSender componentLogger;
+	
+	private final static LinkedList<IColor> _LOG_PREFIX_COLORS = new LinkedList<>(List.of(Colors.RED_200, Colors.YELLOW_0, Colors.ORANGE, Colors.GREEN_0, Colors.DARK_PURPLE));
+	
 	
 	@Override
 	public void onEnable()
 	{
-		// Plugin startup logic
+		super.onEnable();
 		current = this;
 		currentServer = getServer();
 		componentLogger = currentServer.getConsoleSender();
 		itemFactory = currentServer.getItemFactory();
 		scheduler = currentServer.getScheduler();
 		
+		preInitInk(this);
+		
 		Log.info(Comp.tc("Ink Enabled Successfully!", Colors.LEGACY_AQUA));
 		Log.info(Comp.a(Comp.t("Powered by "), Comp.tc("THEIA Core", Colors.LEGACY_YELLOW), Comp.t(" from "), Comp.tc("XTHEIA", Colors.LEGACY_AQUA)));
 	}
 	
-	public static void logPluginLoaded(Plugin plugin)
+	static @Nullable IColor hookPlugin(TheiaPaperPlugin plugin)
 	{
-		Log.info(Comp.tc(plugin.getName() + " Enabled Successfully!", Colors.LEGACY_AQUA));
+		final var pop = _LOG_PREFIX_COLORS.poll();
+		Log.info(Comp.a(Comp.tc(plugin.getName(), pop), Comp.t(" hooked!")));
 		Log.info(Comp.a(Comp.t("Powered by "), Comp.tc("Ink", Colors.LEGACY_YELLOW), Comp.t(" from "), Comp.tc("XTHEIA", Colors.LEGACY_AQUA)));
+		return pop;
 	}
 	
 	public static Server getCurrentServer()

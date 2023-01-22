@@ -4,6 +4,7 @@ import kr.sbxt.xtheia.theia.ink.color.Colors;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.ConsoleCommandSender;
 
+@Deprecated
 public final class Log
 {
 	private final static ConsoleCommandSender componentLogger;
