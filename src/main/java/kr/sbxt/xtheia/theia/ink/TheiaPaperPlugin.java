@@ -5,6 +5,7 @@ import kr.sbxt.xtheia.theia.ink.color.RGB;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemFactory;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -59,6 +60,11 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 	public static Server CurrentServer()
 	{
 		return currentServer;
+	}
+	
+	public static void RegisterServerEventListener(Listener listener)
+	{
+		currentServer.getPluginManager().registerEvents(listener, current);
 	}
 	
 	public static ItemFactory ItemFactory()
