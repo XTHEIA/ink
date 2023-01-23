@@ -39,7 +39,6 @@ publishing {
     publications {
         gpr(MavenPublication) {
 
-            System.out.println('published with name ' + System.getenv("USERNAME"))
 
             def file = new File('core.version');
             int previous = Integer.parseInt(file.text)
@@ -50,8 +49,9 @@ publishing {
             def publishDesc = 'Built at ' + LocalDateTime.now().format("yyyy.MM.dd HH:mm:ss");
 
             from(components.java)
+            def newVersion = 'b' + version + '.' + build;
+            version(newVersion)
 
-            version('b' + version + '.' + build)
             description(publishDesc)
 
             pom {
@@ -66,6 +66,7 @@ publishing {
                 }
             }
 
+            System.out.println('publishing ' + newVersion)
         }
     }
 }
