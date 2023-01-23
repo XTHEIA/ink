@@ -4,15 +4,16 @@ import kr.sbxt.xtheia.theia.ink.color.Colors;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.ConsoleCommandSender;
 
-@Deprecated
+//@Deprecated
 public final class Log
 {
 	private final static ConsoleCommandSender componentLogger;
-	private final static Component prefix = Comp.tc("XT/ ", Colors.LEGACY_AQUA);
+	private final static Component prefix;
 	
 	static
 	{
-		componentLogger = InkPlugin.componentLogger;
+		componentLogger = TheiaPaperPlugin.ConsoleCommandSender();
+		prefix = TheiaPaperPlugin.PluginLogPrefix();
 	}
 	
 	public static void info(String msg)
@@ -22,6 +23,6 @@ public final class Log
 	
 	public static void info(Component msg)
 	{
-		componentLogger.sendMessage(prefix.append(msg));
+		componentLogger.sendMessage(prefix.append(Comp.space).append(msg));
 	}
 }

@@ -1,4 +1,4 @@
-package kr.sbxt.xtheia.theia.ink;
+package kr.sbxt.xtheia.theia.ink.utility;
 
 import org.bukkit.Color;
 

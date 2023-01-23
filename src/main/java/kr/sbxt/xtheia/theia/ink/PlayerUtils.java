@@ -1,5 +1,6 @@
 package kr.sbxt.xtheia.theia.ink;
 
+import kr.sbxt.xtheia.theia.ink.vector.VectorUtils;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;

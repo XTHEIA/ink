@@ -1,5 +1,6 @@
-package kr.sbxt.xtheia.theia.ink;
+package kr.sbxt.xtheia.theia.ink.server;
 
+import kr.sbxt.xtheia.theia.ink.TheiaPaperPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -12,8 +13,8 @@ public final class Tasker
 	
 	static
 	{
-		_plugin = TheiaPaperPlugin.current;
-		_scheduler = TheiaPaperPlugin.scheduler;
+		_plugin = TheiaPaperPlugin.CurrentPlugin();
+		_scheduler = TheiaPaperPlugin.ServerScheduler();
 	}
 	
 	public static BukkitTask delayed(long delayTicks, Runnable task)
