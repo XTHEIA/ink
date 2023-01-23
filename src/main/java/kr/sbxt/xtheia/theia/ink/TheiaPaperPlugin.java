@@ -28,7 +28,7 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 	{
 		current = this;
 		final var pluginName = current.getName();
-		hashColor = new RGB(Color.HSBtoRGB((float) Math.abs(pluginName.hashCode()) % _LOG_PREFIX_COLOR_HASH_PRECISION / _LOG_PREFIX_COLOR_HASH_PRECISION, 1f, 1f));
+		hashColor = new RGB(Color.HSBtoRGB((float) Math.abs(pluginName.hashCode()) % _LOG_PREFIX_COLOR_HASH_PRECISION / _LOG_PREFIX_COLOR_HASH_PRECISION, 0.5f, 1f));
 		logPrefix = Comp.tc("X/", Colors.LEGACY_AQUA).append(Comp.tc(pluginName + "/ ", hashColor));
 	}
 	

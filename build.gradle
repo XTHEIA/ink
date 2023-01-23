@@ -17,15 +17,11 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
-    maven {
-        url = uri("https://maven.pkg.github.com/XTHEIA/theiacore")
-    }
 }
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     compileOnly "io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT"
-    implementation(group: 'kr.sbxt.xtheia.theia', name: 'theiacore', 'version': 'b1.0.42')
 }
 
 publishing {
