@@ -30,7 +30,7 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 		current = this;
 		final var pluginName = current.getName();
 		hashColor = new RGB(Color.HSBtoRGB((float) Math.abs(pluginName.hashCode()) % _LOG_PREFIX_COLOR_HASH_PRECISION / _LOG_PREFIX_COLOR_HASH_PRECISION, 0.4f, 1f));
-		logPrefix = Comp.tc("X/", Colors.LEGACY_AQUA).append(Comp.tc(pluginName + "/", hashColor));
+		logPrefix = Comp.tc(pluginName + "/", hashColor);
 		pluginNameComponent = Comp.tc(pluginName, hashColor);
 	}
 	
@@ -42,14 +42,18 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 		scheduler = _server.getScheduler();
 		consoleCommandSender = _server.getConsoleSender();
 		
-		log(pluginNameComponent.append(Comp.t(" initiated ")).append(Comp.tc(" Successfully!", Colors.LEGACY_GREEN)));
+		log(pluginNameComponent.append(Comp.t(" initiated!")));
 		final var isInkPluginMode = getServer().getPluginManager().getPlugin("Ink") != null;
-		log(Comp.a(
-				Comp.t("Powered by "), Comp.
-						tc("INK", Colors.LEGACY_AQUA), Comp.t
-						("! ("), isInkPluginMode ?
-						Comp.tc("Plugin", Colors.QUASAR) : Comp.tc("Shadow", Colors.LEGACY_AQUA), Comp.t(")")
-		));
+		if (! (this instanceof InkPlugin))
+		{
+			log(Comp.a(
+					Comp.t("Powered by "), Comp.
+							tc("INK", Colors.LEGACY_AQUA), Comp.t
+							("! ("), isInkPluginMode ?
+							Comp.tc("Plugin", Colors.QUASAR) : Comp.tc("Shadow", Colors.LEGACY_AQUA), Comp.t(")")));
+		}
+		
+		
 	}
 	
 	public static TheiaPaperPlugin CurrentPlugin()
