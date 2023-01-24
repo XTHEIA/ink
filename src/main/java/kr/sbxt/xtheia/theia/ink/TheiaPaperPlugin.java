@@ -1,5 +1,6 @@
 package kr.sbxt.xtheia.theia.ink;
 
+import kr.sbxt.xtheia.theia.ink.color.ColorUtility;
 import kr.sbxt.xtheia.theia.ink.color.Colors;
 import kr.sbxt.xtheia.theia.ink.color.RGB;
 import net.kyori.adventure.text.Component;
@@ -29,7 +30,11 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 	{
 		current = this;
 		final var pluginName = current.getName();
-		hashColor = new RGB(Color.HSBtoRGB((float) Math.abs(pluginName.hashCode()) % _LOG_PREFIX_COLOR_HASH_PRECISION / _LOG_PREFIX_COLOR_HASH_PRECISION, 0.4f, 1f));
+		final var colorAnnotation = this.getClass().getAnnotation(LogPrefixColor.class);
+		
+		hashColor = colorAnnotation != null
+				? new RGB(Color.decode(colorAnnotation.hexValue()).getRGB())
+				: new RGB(Color.HSBtoRGB((float) Math.abs(pluginName.hashCode()) % _LOG_PREFIX_COLOR_HASH_PRECISION / _LOG_PREFIX_COLOR_HASH_PRECISION, 0.4f, 1f));
 		logPrefix = Comp.tc(pluginName + "/", hashColor);
 		pluginNameComponent = Comp.tc(pluginName, hashColor);
 	}
