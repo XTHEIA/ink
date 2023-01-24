@@ -71,7 +71,7 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 		return currentServer;
 	}
 	
-	public static void RegisterServerEventListener(Listener listener)
+	public static void registerServerEventListener(Listener listener)
 	{
 		currentServer.getPluginManager().registerEvents(listener, current);
 	}
