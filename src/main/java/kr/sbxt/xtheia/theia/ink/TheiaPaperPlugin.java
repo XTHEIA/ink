@@ -42,6 +42,11 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 	@Override
 	public void onLoad()
 	{
+		manualInit();
+	}
+	
+	protected void manualInit()
+	{
 		final var _server = currentServer = getServer();
 		itemFactory = _server.getItemFactory();
 		scheduler = _server.getScheduler();
@@ -57,7 +62,6 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 							("! ("), isInkPluginMode ?
 							Comp.tc("Plugin", Colors.QUASAR) : Comp.tc("Shadow", Colors.LEGACY_AQUA), Comp.t(")")));
 		}
-		
 		
 	}
 	
