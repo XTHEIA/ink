@@ -43,4 +43,14 @@ public final class Tasker
 	{
 		return repeatWithDuration(0, periodTicks, durationTicks, task);
 	}
+	
+	public static BukkitTask asyncDelayed(long delayTicks, Runnable task)
+	{
+		return _scheduler.runTaskLaterAsynchronously(_plugin, task, delayTicks);
+	}
+	
+	public static BukkitTask async(Runnable task)
+	{
+		return _scheduler.runTaskAsynchronously(_plugin, task);
+	}
 }

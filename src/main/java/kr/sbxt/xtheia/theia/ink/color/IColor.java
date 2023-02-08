@@ -1,8 +1,12 @@
 package kr.sbxt.xtheia.theia.ink.color;
 
 import kr.sbxt.xtheia.theia.ink.Comp;
+import kr.sbxt.xtheia.theia.ink.utility.ItemStacker;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public interface IColor
 {
@@ -35,5 +39,17 @@ public interface IColor
 	default TextColor asTextColor()
 	{
 		return TextColor.color(getInt());
+	}
+	default ItemStack createItemStack(int qty)
+	{
+		final var item = ItemStacker.simple(Material.LEATHER_CHESTPLATE, false, qty, asHexComponent());
+		item.editMeta(meta ->
+		{
+			if (meta instanceof LeatherArmorMeta leatherArmorMeta)
+			{
+				leatherArmorMeta.setColor(asBukkitColor());
+			}
+		});
+		return item;
 	}
 }
