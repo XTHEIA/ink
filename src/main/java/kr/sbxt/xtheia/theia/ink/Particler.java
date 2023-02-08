@@ -1,6 +1,8 @@
 package kr.sbxt.xtheia.theia.ink;
 
 import com.destroystokyo.paper.ParticleBuilder;
+import kr.sbxt.xtheia.theia.ink.color.ColorInt;
+import kr.sbxt.xtheia.theia.ink.color.ColorRGB;
 import kr.sbxt.xtheia.theia.ink.color.ColorUtility;
 import kr.sbxt.xtheia.theia.ink.server.Tasker;
 import kr.sbxt.xtheia.theia.ink.vector.Line;
@@ -25,12 +27,12 @@ public final class Particler
 		final var particleCount = option.count;
 		final var offsetXZ = option.offsetXZ;
 		final var offsetY = option.offsetY;
-		final Color colorStart = start.getColor(), colorEnd = end.getColor();
+		final ColorRGB colorStart = ColorUtility.toRGB(start.getColor().asRGB()), colorEnd = ColorUtility.toRGB(end.getColor().asRGB());
 		for (int i = 0; i < count; i += 1)
 		{
 			final var weight = i / (float) count;
 			world.spawnParticle(Particle.REDSTONE, originX + (i * stepX), originY + (i * stepY), originZ + (i * stepZ), particleCount, offsetXZ, offsetY, offsetXZ, 0.01,
-					new Particle.DustOptions(ColorUtility.lerp(colorStart, colorEnd, weight), weight), true);
+					new Particle.DustOptions(ColorUtility.lerp(colorStart, colorEnd, weight).asBukkitColor(), weight), true);
 		}
 	}
 	

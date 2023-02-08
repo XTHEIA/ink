@@ -36,7 +36,7 @@ public final class Comp
 	
 	public static Component currentDateTime(IColor color)
 	{
-		return Comp.tc(currentTimeString(), color);
+		return Comp.t(currentTimeString(), color);
 	}
 	
 	public static Component brackets(ComponentLike comp)
@@ -51,12 +51,12 @@ public final class Comp
 	
 	public static Component property(String propKey, ComponentLike propValue)
 	{
-		return a(tc(propKey, Colors.G_200), tc(" ", Colors.G_100), propValue);
+		return a(t(propKey, Colors.G_200), t(" ", Colors.G_100), propValue);
 	}
 	
 	public static Component property(String key, String value, IColor color)
 	{
-		return property(key, tc(value, color));
+		return property(key, t(value, color));
 	}
 	
 	public static Component property(String key, String value)
@@ -82,22 +82,17 @@ public final class Comp
 	
 	public static Component hexColor(int rgb)
 	{
-		return t("#").append(tc(Integer.toHexString(rgb).toUpperCase(), rgb));
+		return t("#").append(t(Integer.toHexString(rgb).toUpperCase(), rgb));
 	}
 	
 	public static Component[] fromStringLores(String... lores)
 	{
 		final Component[] _loresComp_ = new Component[lores.length];
 		int i = 0;
-		for (String lore : lores) { _loresComp_[i++] = Comp.tc(lore, Colors.WHITE); }
+		for (String lore : lores) { _loresComp_[i++] = Comp.t(lore, Colors.WHITE); }
 		return _loresComp_;
 	}
 	
-	
-	public static Component t(String text)
-	{
-		return tc(text, Colors.WHITE);
-	}
 	
 	public static Component highlight(String format, Object... args)
 	{
@@ -109,20 +104,24 @@ public final class Comp
 		return MiniMessage.miniMessage().deserialize(MessageFormat.format(format, arr)).style(plain);
 	}
 	
-	public static Component tc(String text, IColor color)
+	public static Component t(String content)
 	{
-		return tc(text, color.getRGBInt());
+		return t(content, Colors.WHITE);
 	}
 	
-	public static Component tc(String text, int rgb)
+	public static Component t(String content, int rgbInt, TextDecoration... decorations)
 	{
-		return Component.empty().append(Component.text(text, Style.style(TextColor.color(rgb), TextDecoration.ITALIC.withState(TextDecoration.State.FALSE))));
-		
+		return t(content, TextColor.color(rgbInt), decorations);
 	}
 	
-	public static Component tcd(String text, Colors color, TextDecoration... decorations)
+	public static Component t(String content, IColor rgb, TextDecoration... decorations)
 	{
-		return Component.text(text, Style.style(color.asTextColor(), decorations));
+		return t(content, rgb.asTextColor(), decorations);
+	}
+	
+	public static Component t(String content, TextColor color, TextDecoration... decorations)
+	{
+		return Component.text(content, color, decorations);
 	}
 	
 	//	public static Component rarityTypeName(QuasarElement element)
@@ -169,6 +168,6 @@ public final class Comp
 	
 	public static Component number(Number num)
 	{
-		return tc(num.toString(), Colors.YELLOW_0);
+		return t(num.toString(), Colors.YELLOW_0);
 	}
 }

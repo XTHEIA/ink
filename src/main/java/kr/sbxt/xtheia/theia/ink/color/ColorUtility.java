@@ -2,39 +2,21 @@ package kr.sbxt.xtheia.theia.ink.color;
 
 public final class ColorUtility
 {
-	public static int rgb(int r, int g, int b)
+	public static int toInt(final int r, final int g, final int b)
 	{
 		return ((r & 0x0ff) << 16) | ((g & 0x0ff) << 8) | (b & 0x0ff);
 	}
-	
-	public static RGB rgb(int rgb)
-	{
-		return new RGB((rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, (rgb >> 0) & 0xFF);
+	public static int toInt(final ColorRGB rgb){
+		return toInt(rgb.r(),rgb.g(),rgb.b());
 	}
 	
-	public static int rgb(RGB rgb)
+	public static ColorRGB toRGB(final int rgbInt)
 	{
-		return rgb(rgb.r(), rgb.g(), rgb.b());
+		return new ColorRGB((rgbInt >> 16) & 0xFF, (rgbInt >> 8) & 0xFF, (rgbInt >> 0) & 0xFF);
 	}
+
 	
-	
-	public static org.bukkit.Color lerp(org.bukkit.Color c1, org.bukkit.Color c2, float weight)
-	{
-		final int originR = c1.getRed(),
-				originG = c1.getGreen(),
-				originB = c1.getBlue(),
-				addiR = c2.getRed() - originR,
-				addiG = c2.getGreen() - originG,
-				addiB = c2.getBlue() - originB;
-		
-		return org.bukkit.Color.fromRGB(
-				originR + (int) (weight * addiR),
-				originG + (int) (weight * addiG),
-				originB + (int) (weight * addiB)
-		);
-	}
-	
-	public static RGB lerp(RGB c1, RGB c2, float weight)
+	public static ColorRGB lerp(ColorRGB c1, ColorRGB c2, float weight)
 	{
 		final int originR = c1.r(),
 				originG = c1.g(),
@@ -43,10 +25,11 @@ public final class ColorUtility
 				addiG = c2.g() - originG,
 				addiB = c2.b() - originB;
 		
-		return new RGB(
+		return new ColorRGB(
 				originR + (int) (weight * addiR),
 				originG + (int) (weight * addiG),
 				originB + (int) (weight * addiB)
 		);
 	}
+	
 }

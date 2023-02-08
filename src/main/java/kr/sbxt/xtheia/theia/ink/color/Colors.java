@@ -1,5 +1,7 @@
 package kr.sbxt.xtheia.theia.ink.color;
 
+import net.kyori.adventure.util.RGBLike;
+
 public enum Colors implements IColor
 {
 	
@@ -58,12 +60,14 @@ public enum Colors implements IColor
 	QUASAR_LIGHT(0xFE76AD),
 	
 	SOUL(0xB289FF);
-	final private int rgbValue;
+	final private ColorInt colorInt;
+	final private ColorRGB colorRGB;
 	final private String description;
 	
 	private Colors(int value, String description)
 	{
-		this.rgbValue = value;
+		this.colorInt = new ColorInt(value);
+		this.colorRGB = ColorUtility.toRGB(value);
 		this.description = description;
 	}
 	
@@ -72,23 +76,16 @@ public enum Colors implements IColor
 		this(value, null);
 	}
 	
-	private Colors(Colors copy)
-	{
-		this(copy.rgbValue, copy.description);
-	}
-	
-	
-	private Colors(Colors copy, String description)
-	{
-		this(copy.rgbValue, copy.description);
-	}
-	
-	
-
 	
 	@Override
-	public RGB getRGB()
+	public ColorInt getInt()
 	{
-		return ColorUtility.rgb(rgbValue);
+		return colorInt;
+	}
+	
+	@Override
+	public ColorRGB getRGB()
+	{
+		return colorRGB;
 	}
 }

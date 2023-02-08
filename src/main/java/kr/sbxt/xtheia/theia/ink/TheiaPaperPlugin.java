@@ -1,9 +1,10 @@
 package kr.sbxt.xtheia.theia.ink;
 
-import kr.sbxt.xtheia.theia.ink.color.ColorUtility;
+import kr.sbxt.xtheia.theia.ink.color.ColorInt;
 import kr.sbxt.xtheia.theia.ink.color.Colors;
-import kr.sbxt.xtheia.theia.ink.color.RGB;
+import kr.sbxt.xtheia.theia.ink.color.ColorRGB;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.event.Listener;
@@ -17,7 +18,7 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 {
 	private static final int _LOG_PREFIX_COLOR_HASH_PRECISION = 256;
 	
-	protected static RGB hashColor;
+	protected static TextColor hashColor;
 	protected static Component logPrefix, pluginNameComponent;
 	
 	protected static TheiaPaperPlugin current;
@@ -33,10 +34,10 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 		final var colorAnnotation = this.getClass().getAnnotation(LogPrefixColor.class);
 		
 		hashColor = colorAnnotation != null
-				? new RGB(Color.decode(colorAnnotation.hexValue()).getRGB())
-				: new RGB(Color.HSBtoRGB((float) Math.abs(pluginName.hashCode()) % _LOG_PREFIX_COLOR_HASH_PRECISION / _LOG_PREFIX_COLOR_HASH_PRECISION, 0.4f, 1f));
-		logPrefix = Comp.tc(pluginName + "/", hashColor);
-		pluginNameComponent = Comp.tc(pluginName, hashColor);
+				? new ColorInt(Color.decode(colorAnnotation.hexValue()).getRGB())
+				: new ColorInt(Color.HSBtoRGB((float) Math.abs(pluginName.hashCode()) % _LOG_PREFIX_COLOR_HASH_PRECISION / _LOG_PREFIX_COLOR_HASH_PRECISION, 0.4f, 1f));
+		logPrefix = Comp.t(pluginName + "/", hashColor);
+		pluginNameComponent = Comp.t(pluginName, hashColor);
 	}
 	
 	@Override
@@ -53,9 +54,9 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 		{
 			log(Comp.a(
 					Comp.t("Powered by "), Comp.
-							tc("INK", Colors.LEGACY_AQUA), Comp.t
+							t("INK", Colors.LEGACY_AQUA), Comp.t
 							("! ("), isInkPluginMode ?
-							Comp.tc("Plugin", Colors.QUASAR) : Comp.tc("Shadow", Colors.LEGACY_AQUA), Comp.t(")")));
+							Comp.t("Plugin", Colors.QUASAR) : Comp.t("Shadow", Colors.LEGACY_AQUA), Comp.t(")")));
 		}
 		
 		
@@ -91,7 +92,7 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 		return consoleCommandSender;
 	}
 	
-	public static RGB PluginNameHashColor()
+	public static TextColor PluginNameHashColor()
 	{
 		return hashColor;
 	}

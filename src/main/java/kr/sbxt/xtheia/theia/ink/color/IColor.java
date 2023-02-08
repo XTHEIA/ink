@@ -6,33 +6,34 @@ import net.kyori.adventure.text.format.TextColor;
 
 public interface IColor
 {
+	ColorInt getInt();
 	
-	RGB getRGB();
+	ColorRGB getRGB();
 	
-	default int getRGBInt()
-	{
-		return ColorUtility.rgb(getRGB());
-	}
 	
 	default org.bukkit.Color asBukkitColor()
 	{
-		return org.bukkit.Color.fromRGB(getRGBInt());
+		return org.bukkit.Color.fromRGB(getInt().rgbValue());
 	}
 	
-	default TextColor asTextColor()
+	default String asHex()
 	{
-		return TextColor.color(getRGBInt());
+		return "#" + asHexWithoutSharp();
 	}
 	
-	default String asHexString()
+	
+	default String asHexWithoutSharp()
 	{
-		return asTextColor().asHexString().substring(1);
+		return String.format("%06x", getInt().rgbValue());
 	}
 	
 	default Component asHexComponent()
 	{
-		return Comp.hexColor(getRGBInt());
+		return Comp.hexColor(getInt().rgbValue());
 	}
 	
-	
+	default TextColor asTextColor()
+	{
+		return TextColor.color(getInt());
+	}
 }
