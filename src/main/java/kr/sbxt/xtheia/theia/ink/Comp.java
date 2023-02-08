@@ -2,6 +2,7 @@ package kr.sbxt.xtheia.theia.ink;
 
 import kr.sbxt.xtheia.theia.ink.color.Colors;
 import kr.sbxt.xtheia.theia.ink.color.Color;
+import kr.sbxt.xtheia.theia.ink.color._ITextColor;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentLike;
 import net.kyori.adventure.text.flattener.ComponentFlattener;
@@ -113,6 +114,7 @@ public final class Comp
 	{
 		return t(content, TextColor.color(rgbInt), decorations);
 	}
+	
 	
 	public static Component t(String content, Color rgb, TextDecoration... decorations)
 	{

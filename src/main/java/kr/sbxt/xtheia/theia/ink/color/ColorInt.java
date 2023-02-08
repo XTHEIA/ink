@@ -6,7 +6,7 @@ package kr.sbxt.xtheia.theia.ink.color;
  *
  * @param rgbValue
  */
-public record ColorInt(int rgbValue) implements Color
+public record ColorInt(int rgbValue) implements _ITextColor
 {
 	@Override
 	public ColorInt getInt()
