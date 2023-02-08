@@ -7,7 +7,7 @@ package kr.sbxt.xtheia.theia.ink.color;
  * @param g
  * @param b
  */
-public record ColorRGB(int r, int g, int b) implements ITextColor
+public record ColorRGB(int r, int g, int b) implements Color
 {
 	public ColorRGB(int r, int g, int b)
 	{

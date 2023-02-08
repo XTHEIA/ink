@@ -1,8 +1,6 @@
 package kr.sbxt.xtheia.theia.ink.color;
 
-import net.kyori.adventure.util.RGBLike;
-
-public enum Colors implements IColor
+public enum Colors implements Color
 {
 	
 	WHITE(0xFFFFFF), // #FFFFFF

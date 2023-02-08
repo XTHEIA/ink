@@ -8,7 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
-public interface IColor
+public interface Color
 {
 	ColorInt getInt();
 	
@@ -38,8 +38,9 @@ public interface IColor
 	
 	default TextColor asTextColor()
 	{
-		return TextColor.color(getInt());
+		return TextColor.color(getInt().rgbValue());
 	}
+	
 	default ItemStack createItemStack(int qty)
 	{
 		final var item = ItemStacker.simple(Material.LEATHER_CHESTPLATE, false, qty, asHexComponent());

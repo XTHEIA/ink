@@ -1,14 +1,12 @@
 package kr.sbxt.xtheia.theia.ink.color;
 
 
-import net.kyori.adventure.text.format.TextColor;
-
 /**
  * 색상을 가볍게 저장하고 싶을 때 int 대신에 쓰는 클래스.
  *
  * @param rgbValue
  */
-public record ColorInt(int rgbValue) implements ITextColor
+public record ColorInt(int rgbValue) implements Color
 {
 	@Override
 	public ColorInt getInt()

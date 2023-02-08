@@ -18,7 +18,7 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 {
 	private static final int _LOG_PREFIX_COLOR_HASH_PRECISION = 256;
 	
-	protected static TextColor hashColor;
+	protected static kr.sbxt.xtheia.theia.ink.color.Color hashColor;
 	protected static Component logPrefix, pluginNameComponent;
 	
 	protected static TheiaPaperPlugin current;
@@ -96,7 +96,7 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 		return consoleCommandSender;
 	}
 	
-	public static TextColor PluginNameHashColor()
+	public static kr.sbxt.xtheia.theia.ink.color.Color PluginNameHashColor()
 	{
 		return hashColor;
 	}

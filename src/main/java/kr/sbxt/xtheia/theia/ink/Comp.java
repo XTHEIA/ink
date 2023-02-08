@@ -1,7 +1,7 @@
 package kr.sbxt.xtheia.theia.ink;
 
 import kr.sbxt.xtheia.theia.ink.color.Colors;
-import kr.sbxt.xtheia.theia.ink.color.IColor;
+import kr.sbxt.xtheia.theia.ink.color.Color;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentLike;
 import net.kyori.adventure.text.flattener.ComponentFlattener;
@@ -34,7 +34,7 @@ public final class Comp
 		return LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
 	}
 	
-	public static Component currentDateTime(IColor color)
+	public static Component currentDateTime(Color color)
 	{
 		return Comp.t(currentTimeString(), color);
 	}
@@ -54,7 +54,7 @@ public final class Comp
 		return a(t(propKey, Colors.G_200), t(" ", Colors.G_100), propValue);
 	}
 	
-	public static Component property(String key, String value, IColor color)
+	public static Component property(String key, String value, Color color)
 	{
 		return property(key, t(value, color));
 	}
@@ -114,7 +114,7 @@ public final class Comp
 		return t(content, TextColor.color(rgbInt), decorations);
 	}
 	
-	public static Component t(String content, IColor rgb, TextDecoration... decorations)
+	public static Component t(String content, Color rgb, TextDecoration... decorations)
 	{
 		return t(content, rgb.asTextColor(), decorations);
 	}
