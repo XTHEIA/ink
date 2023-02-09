@@ -34,8 +34,8 @@ public abstract class TheiaPaperPlugin extends JavaPlugin
 		final var colorAnnotation = this.getClass().getAnnotation(LogPrefixColor.class);
 		
 		hashColor = colorAnnotation != null
-				? new ColorInt(Color.decode(colorAnnotation.hexValue()).getRGB())
-				: new ColorInt(Color.HSBtoRGB((float) Math.abs(pluginName.hashCode()) % _LOG_PREFIX_COLOR_HASH_PRECISION / _LOG_PREFIX_COLOR_HASH_PRECISION, 0.4f, 1f));
+				? TextColor.fromHexString(colorAnnotation.hexValue())
+				: TextColor.color(Color.HSBtoRGB((float) Math.abs(pluginName.hashCode()) % _LOG_PREFIX_COLOR_HASH_PRECISION / _LOG_PREFIX_COLOR_HASH_PRECISION, 0.4f, 1f));
 		logPrefix = Comp.t(pluginName + "/", hashColor);
 		pluginNameComponent = Comp.t(pluginName, hashColor);
 	}
