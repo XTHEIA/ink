@@ -123,7 +123,7 @@ public final class Comp
 	
 	public static Component t(String content, TextColor color, TextDecoration... decorations)
 	{
-		return Component.text(content, color, decorations);
+		return Component.text(content, Style.style().color(color).decoration(TextDecoration.ITALIC, false).decorate(decorations).build());
 	}
 	
 	//	public static Component rarityTypeName(QuasarElement element)
