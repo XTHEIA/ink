@@ -5,12 +5,14 @@ import kr.sbxt.xtheia.theia.ink.color.Colors;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.ComponentLike;
 import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.TranslatableComponent;
 import net.kyori.adventure.text.flattener.ComponentFlattener;
 import net.kyori.adventure.text.format.Style;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
+import net.kyori.adventure.translation.Translatable;
 
 import java.text.MessageFormat;
 import java.time.LocalDateTime;
@@ -164,7 +166,6 @@ public final class Comp
         return t(content, TextColor.color(rgbInt), decorations);
     }
 
-
     public static TextComponent t(String content, Color rgb, TextDecoration... decorations)
     {
         return t(content, rgb.asTextColor(), decorations);
@@ -174,6 +175,22 @@ public final class Comp
     {
         return Component.text(content, Style.style().color(color).decoration(TextDecoration.ITALIC, false).decorate(decorations).build());
     }
+
+    public static TranslatableComponent translatable(Translatable translatable, Color color)
+    {
+        return Component.translatable(translatable).style(plain).color(color.asTextColor());
+    }
+
+    public static TranslatableComponent translatableComponent(Translatable translatable)
+    {
+        return translatable(translatable, Colors.WHITE);
+    }
+
+    public static Component gradient(String text, Color from, Color to)
+    {
+        return MiniMessage.miniMessage().deserialize("<gradient:%s:%s>%s</gradient>".formatted(from.asHex(), to.asHex(), text)).style(plain);
+    }
+
 
     //	public static Component rarityTypeName(QuasarElement element)
     //	{
